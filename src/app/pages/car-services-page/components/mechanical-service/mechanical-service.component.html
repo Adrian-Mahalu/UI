@@ -1,0 +1,75 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mechanical-form">
+    <div class="form-group">
+      <p class="form-label">Completeaza formularul pentru mecanic</p>
+    </div>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Numele complet</mat-label>
+        <input matInput formControlName="fullName" placeholder="Introduceti numele complet" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Numarul de telefon</mat-label>
+        <input matInput 
+        maxlength="10"
+        mlength="10"
+        formControlName="phone" placeholder="Introduceti numarul de telefon" />
+        <mat-hint align="end">{{ (form.get('phone')?.value || '').length }}/10</mat-hint>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Alege data</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" class="date-input" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Alege ora</mat-label>
+      <mat-select formControlName="hour" class="hour-picker">
+        <mat-option *ngFor="let h of hours" [value]="h">
+          {{ h }}:00
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>VIN</mat-label>
+        <textarea
+          matInput
+          formControlName="vin"
+          maxlength="17"
+          minlength="17"
+          placeholder="Scrie VIN-ul din cartea masinii"
+          rows="2"
+        ></textarea>
+        <mat-hint align="end">{{ (form.get('vin')?.value || '').length }}/17</mat-hint>
+      </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Descriere</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        class="description-textbox"
+        maxlength="200"
+        placeholder="Adauga o descriere (maxim 200 caractere)"
+        rows="3"
+      ></textarea>
+      <mat-hint align="end">{{ (form.get('description')?.value || '').length }}/200</mat-hint>
+    </mat-form-field>
+
+    <div formArrayName="lightChecks" class="checkbox-list">
+        <p class="form-label">Martori aprinsi: </p>
+        <div *ngFor="let check of checks.controls; let i = index">
+          <mat-checkbox [formControlName]="i" class="checkbox-option">
+            {{ lightChecks[i] }}
+          </mat-checkbox>
+        </div>
+      </div>
+  
+    <button mat-raised-button color="primary" type="submit" class="submit-btn">
+      Programeaza acum
+    </button>
+  </form>
+  

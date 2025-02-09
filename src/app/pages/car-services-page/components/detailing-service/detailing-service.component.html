@@ -1,0 +1,103 @@
+<div class="packages-container">
+    <mat-card class="card">
+        <mat-card-content>
+            <span class="title">Basic package</span>
+            <br /><br />
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <br />
+            <span class="price">200 Euro</span>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+        <mat-card-content>
+            <span class="title">Advanced package</span>
+            <br /><br />
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+
+            <br />
+            <span class="price">300 Euro</span>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+        <mat-card-content>
+            <span class="title">Full package</span>
+            <br /><br />
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <span>Lorem Ipsum is simply dummy text of\tStart with 'Lorem\nipsum dolor </span>
+            <br />
+            <span class="price">450 Euro</span>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="detailing-form">
+    <div class="form-group">
+        <p class="form-label">Completeaza formularul pentru detailing</p>
+        <mat-radio-group formControlName="packageOption" class="radio-group">
+            <mat-radio-button *ngFor="let opt of ['Basic package', 'Advanced package', 'Full package']" [value]="opt"
+                class="radio-option">
+                {{ opt }}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Numele complet</mat-label>
+        <input matInput formControlName="fullName" placeholder="Introduceți numele complet" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Numarul de telefon</mat-label>
+        <input matInput 
+        maxlength="10"
+        minlength="10"
+        formControlName="phone" placeholder="Introduceti numarul de telefon" />
+        <mat-hint align="end">{{ (form.get('phone')?.value || '').length }}/10</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Brandul masinii</mat-label>
+        <mat-select formControlName="carBrand" placeholder="Selecteaza brandul masinii">
+            <mat-option *ngFor="let brand of carBrands" [value]="brand">
+                {{ brand }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Tipul caroseriei</mat-label>
+        <mat-select formControlName="bodyType" placeholder="Selecteaza caroseria masinii">
+            <mat-option *ngFor="let bodyType of carBodyTypes" [value]="bodyType">
+                {{ bodyType }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Alege data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" class="date-input" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Alege ora</mat-label>
+        <mat-select formControlName="hour" class="hour-picker">
+            <mat-option *ngFor="let h of availableHours" [value]="h">
+                {{ h }}:00
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="submit-btn">
+        Programeaza acum
+    </button>
+</form>

@@ -1,0 +1,32 @@
+{
+  "detailingRequests": [
+    {
+      "id": "daf4",
+      "fullName": "Adriano Ronaldo",
+      "phone": "0766666666",
+      "carBrand": "BMW",
+      "bodyType": "Coupe/GranCoupe",
+      "packageOption": "Advanced package",
+      "date": "2025-02-09T22:00:00.000Z",
+      "hour": 9
+    }
+  ],
+  "mechanicalRequests": [
+    {
+      "id": "d487",
+      "fullName": "Adriano Ronaldo",
+      "phone": "0766666666",
+      "lightChecks": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "date": "2025-02-04T22:00:00.000Z",
+      "hour": 10,
+      "description": "O descriere",
+      "vin": "12345672121s21s12"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of } from 'rxjs';
-import { DetailingForm } from '../models/detailing-form';
+import { DetailingFormInterface } from '../forms-interfaces/detailing-form';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +12,8 @@ export class DetailingService {
 
   constructor(private http: HttpClient) { }
 
-  addDetailingRequest(detailingData: DetailingForm): Observable<DetailingForm> {
-    return this.http.post<DetailingForm>(this.apiUrl, detailingData);
+  addDetailingRequest(detailingData: DetailingFormInterface): Observable<DetailingFormInterface> {
+    return this.http.post<DetailingFormInterface>(this.apiUrl, detailingData);
   }
 
   getAvailableHours(date: string | null): Observable<number[]> {
@@ -21,7 +21,7 @@ export class DetailingService {
       return of(this.hours);
     }
 
-    return this.http.get<DetailingForm[]>(this.apiUrl).pipe(
+    return this.http.get<DetailingFormInterface[]>(this.apiUrl).pipe(
       map((requests) => {
         console.log('All requests:', requests);
 

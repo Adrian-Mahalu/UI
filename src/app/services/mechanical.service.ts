@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MechanicalForm } from '../models/mechanical-form';
+import { MechanicalFormInterface } from '../forms-interfaces/mechanical-form';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class MechanicalService {
 
   constructor(private http: HttpClient) {}
 
-  addMechanicalRequest(mechanicalData: MechanicalForm): Observable<MechanicalForm> {
-    return this.http.post<MechanicalForm>(this.apiUrl, mechanicalData);
+  addMechanicalRequest(mechanicalData: MechanicalFormInterface): Observable<MechanicalFormInterface> {
+    return this.http.post<MechanicalFormInterface>(this.apiUrl, mechanicalData);
   }
 }

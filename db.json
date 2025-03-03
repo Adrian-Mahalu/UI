@@ -9,6 +9,26 @@
       "packageOption": "Advanced package",
       "date": "2025-02-09T22:00:00.000Z",
       "hour": 9
+    },
+    {
+      "id": "0268",
+      "fullName": "adrian",
+      "phone": "0736666666",
+      "carBrand": "Volkswagen",
+      "bodyType": "SUV",
+      "packageOption": "Basic package",
+      "date": "2025-03-03T00:00:00.000Z",
+      "hour": 10
+    },
+    {
+      "id": "a4ae",
+      "fullName": "Pepsi",
+      "phone": "6666666666",
+      "carBrand": "Audi",
+      "bodyType": "Cabrio",
+      "packageOption": "Basic package",
+      "date": "2025-03-28T00:00:00.000Z",
+      "hour": 18
     }
   ],
   "mechanicalRequests": [
@@ -27,6 +47,32 @@
       "hour": 10,
       "description": "O descriere",
       "vin": "12345672121s21s12"
+    },
+    {
+      "id": "03e5",
+      "lightChecks": [],
+      "date": "2025-03-03T22:00:00.000Z",
+      "hour": 10,
+      "description": "Rolls Royce",
+      "fullName": "Gigi Becali",
+      "phone": "6666666666",
+      "vin": "s21123d323d323ddd"
+    },
+    {
+      "id": "95ad",
+      "lightChecks": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "date": null,
+      "hour": null,
+      "description": null,
+      "fullName": null,
+      "phone": null,
+      "vin": null
     }
   ]
 }

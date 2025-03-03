@@ -60,13 +60,13 @@
     </mat-form-field>
 
     <div formArrayName="lightChecks" class="checkbox-list">
-        <p class="form-label">Martori aprinsi: </p>
+        <span class="form-label">Martori aprinsi: </span>
         <div *ngFor="let check of checks.controls; let i = index">
           <mat-checkbox [formControlName]="i" class="checkbox-option">
             {{ lightChecks[i] }}
           </mat-checkbox>
         </div>
-      </div>
+    </div>
   
     <button mat-raised-button color="primary" type="submit" class="submit-btn">
       Programeaza acum

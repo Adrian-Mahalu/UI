@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatHint } from '@angular/material/form-field';
-import { MechanicalForm } from '../../../../models/mechanical-form';
+import { MechanicalForm, MechanicalFormInterface } from '../../../../forms-interfaces/mechanical-form';
 import { MechanicalService } from '../../../../services/mechanical.service';
 
 @Component({
@@ -35,23 +35,24 @@ export class MechanicalServiceComponent {
 
   constructor(private fb: FormBuilder, private mechanicalService: MechanicalService) {
     this.form = this.fb.group({
-      fullName: [null, Validators.required],
-      phone: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]],
-      lightChecks: this.fb.array(this.lightChecks.map(() => this.fb.control(false))),
-      date: [null, Validators.required],
-      hour: [null, Validators.required],
-      description: ['', [Validators.maxLength(200)]],
-      vin: ['', [Validators.required, Validators.minLength(17), Validators.maxLength(17)]]
+      lightChecks: this.fb.array(this.lightChecks.map(() => new FormControl(false))),
+      date: new FormControl<string | null>(null, { nonNullable: true }),
+      hour: new FormControl<string | null>(null, { nonNullable: true }),
+      description: new FormControl<string | null>(null, { nonNullable: true }),
+      fullName: new FormControl<string | null>(null, { nonNullable: true }),
+      phone: new FormControl<string | null>(null, { nonNullable: true }),
+      vin: new FormControl<string | null>(null, { nonNullable: true }),
     });
   }
-
+  
   get checks() {
     return this.form.get('lightChecks') as FormArray;
   }
+  
 
   onSubmit() {
     if (this.form.valid) {
-      const formData = this.form.value as MechanicalForm;
+      const formData = this.form.value as MechanicalFormInterface;
 
       this.mechanicalService.addMechanicalRequest(formData).subscribe({
         next: (response) => {
